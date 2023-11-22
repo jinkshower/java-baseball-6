@@ -10,13 +10,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class ComputerNumbersTest {
+class GameNumbersTest {
 
     @DisplayName("생성한 숫자 리스트에 중복이 있을때 예외가 발생한다")
     @ParameterizedTest
     @MethodSource("provideDuplicatedNumbersList")
     void throwExceptionForDuplication(List<Integer> input) {
-        assertThatThrownBy(() -> ComputerNumbers.of(()-> input))
+        assertThatThrownBy(() -> GameNumbers.of(()-> input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -32,7 +32,7 @@ class ComputerNumbersTest {
     @ParameterizedTest
     @MethodSource("provideInvalidSizeNumbersList")
     void throwExceptionForInvalidSize(List<Integer> input) {
-        assertThatThrownBy(() -> ComputerNumbers.of(()-> input))
+        assertThatThrownBy(() -> GameNumbers.of(()-> input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -48,7 +48,7 @@ class ComputerNumbersTest {
     @ParameterizedTest
     @MethodSource("provideInvalidRangeNumbersList")
     void throwExceptionForInvalidRange(List<Integer> input) {
-        assertThatThrownBy(() -> ComputerNumbers.of(()-> input))
+        assertThatThrownBy(() -> GameNumbers.of(()-> input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
