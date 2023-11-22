@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.numbers;
 
 import static baseball.domain.GameConstants.MAX_NUMBER;
 import static baseball.domain.GameConstants.MAX_SIZE;

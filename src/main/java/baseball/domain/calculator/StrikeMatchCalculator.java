@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.domain.calculator;
 
+import baseball.domain.calculator.MatchCalculator;
 import java.util.List;
 import java.util.stream.IntStream;
 

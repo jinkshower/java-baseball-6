@@ -1,10 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.GameNumbers;
-import baseball.domain.RandomNumberGenerator;
+import baseball.domain.numbers.GameNumbers;
 import baseball.util.ExceptionHandler;
 import baseball.view.InputView;
-import java.util.List;
 
 public class GameController {
 

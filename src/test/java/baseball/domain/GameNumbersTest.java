@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.numbers.GameNumbers;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;

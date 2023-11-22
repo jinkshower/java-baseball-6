@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.calculator;
 
 import java.util.List;
 
