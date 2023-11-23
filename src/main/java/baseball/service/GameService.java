@@ -23,7 +23,7 @@ public class GameService {
     }
 
     public ApplicationStatus checkWin() {
-        if (result.getMatchResult().getOrDefault(Hint.STRIKE, 0) == 3) {
+        if (result.isThreeStrike()) {
             return ApplicationStatus.RETRY;
         }
         return ApplicationStatus.PLAYING;

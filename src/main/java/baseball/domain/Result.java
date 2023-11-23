@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Result {
 
+    private static final int THREE_STRIKE = 3;
     private final Map<Hint, Integer> matchResult;
 
     private Result(Map<Hint, Integer> matchResult) {
@@ -25,8 +26,8 @@ public class Result {
         return new Result(result);
     }
 
-    public Map<Hint, Integer> getMatchResult() {
-        return matchResult;
+    public boolean isThreeStrike() {
+        return matchResult.getOrDefault(Hint.STRIKE,0) == THREE_STRIKE;
     }
 
     public String getFormattedResult() {
