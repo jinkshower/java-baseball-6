@@ -10,19 +10,20 @@ import baseball.view.OutputVIew;
 public class GameService {
 
     private final GameNumbers computerNumbers;
+    private Result result;
 
     public GameService(GameNumbers computerNumbers) {
         this.computerNumbers = computerNumbers;
     }
 
-    public ApplicationStatus playRound(GameNumbers userNumbers) {
+    public String playOneRound(GameNumbers userNumbers) {
         Referee referee = new Referee();
-        Result result = referee.judge(computerNumbers, userNumbers);
+        result = referee.judge(computerNumbers, userNumbers);
+        return result.getFormattedResult();
+    }
 
-        OutputVIew outputVIew = new OutputVIew();
-        outputVIew.printHint(result.getFormattedResult());
+    public ApplicationStatus checkWin() {
         if (result.getMatchResult().getOrDefault(Hint.STRIKE, 0) == 3) {
-            outputVIew.printGameOverMessage();
             return ApplicationStatus.RETRY;
         }
         return ApplicationStatus.PLAYING;

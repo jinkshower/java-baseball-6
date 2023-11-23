@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.ApplicationStatus;
+import baseball.domain.Referee;
+import baseball.domain.Result;
 import baseball.domain.numbers.GameNumbers;
 import baseball.domain.numbers.RandomNumberGenerator;
 import baseball.service.GameService;
@@ -39,10 +41,12 @@ public class GameController {
 
     private ApplicationStatus playRound() {
         GameNumbers userNumbers = GameNumbers.of(inputView::readUserNumbers);
-        return gameService.playRound(userNumbers);
+        outputVIew.printHint(gameService.playOneRound(userNumbers));
+        return gameService.checkWin();
     }
 
     private ApplicationStatus retryOrExit() {
+        outputVIew.printGameOverMessage();
         int answer = inputView.readRetryOrExit();
         if (answer == 1) {
             return ApplicationStatus.SET_UP_GAME;
