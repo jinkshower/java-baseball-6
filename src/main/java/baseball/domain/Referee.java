@@ -28,7 +28,7 @@ public class Referee {
 
     public Result judge(GameNumbers computerNumbers, GameNumbers userNumbers) {
         List<Integer> calculatedMatch = calculate(computerNumbers, userNumbers);
-        calculatedMatch.set(0, calculatedMatch.get(0) - calculatedMatch.get(1));
+        calculatedMatch.set(BALL_INDEX, calculatedMatch.get(BALL_INDEX) - calculatedMatch.get(STRIKE_INDEX));
         return Result.of(calculatedMatch);
     }
 

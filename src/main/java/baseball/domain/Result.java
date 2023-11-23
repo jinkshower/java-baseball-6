@@ -19,11 +19,14 @@ public class Result {
             result.put(Hint.NOTHING, 0);
             return new Result(result);
         }
+        return new Result(assignHint(result, calculatedMatch));
+    }
 
+    private static Map<Hint, Integer> assignHint(Map<Hint, Integer> result, List<Integer> calculatedMatch) {
         result.put(Hint.BALL, calculatedMatch.get(0));
         result.put(Hint.STRIKE, calculatedMatch.get(1));
         result.values().remove(0);
-        return new Result(result);
+        return result;
     }
 
     public boolean isThreeStrike() {

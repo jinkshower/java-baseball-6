@@ -1,8 +1,6 @@
 package baseball.controller;
 
 import baseball.domain.ApplicationStatus;
-import baseball.domain.Referee;
-import baseball.domain.Result;
 import baseball.domain.numbers.GameNumbers;
 import baseball.domain.numbers.RandomNumberGenerator;
 import baseball.service.GameService;
