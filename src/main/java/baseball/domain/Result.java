@@ -31,7 +31,7 @@ public class Result {
 
     public String getFormattedResult() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Hint hint: matchResult.keySet()) {
+        for (Hint hint : matchResult.keySet()) {
             String format = hint.getMessage(hint, matchResult.get(hint));
             stringBuilder.append(format);
         }

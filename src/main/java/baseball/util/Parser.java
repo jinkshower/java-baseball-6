@@ -5,11 +5,12 @@ import java.util.List;
 
 public class Parser {
 
-    private Parser() {}
+    private Parser() {
+    }
 
     public static List<Integer> parseStringToInt(String text) {
         return Arrays.stream(text
-                        .replace(" ","")
+                        .replace(" ", "")
                         .split(""))
                 .map(Integer::parseInt)
                 .toList();

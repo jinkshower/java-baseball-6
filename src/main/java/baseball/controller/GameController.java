@@ -15,7 +15,7 @@ public class GameController {
     private final InputView inputView;
     private final OutputVIew outputVIew;
     private final Map<ApplicationStatus, Supplier<ApplicationStatus>> gameGuide;
-    private  GameService gameService;
+    private GameService gameService;
 
     public GameController(InputView inputView, OutputVIew outputVIew) {
         this.inputView = inputView;
@@ -49,8 +49,6 @@ public class GameController {
         }
         return ApplicationStatus.APPLICATION_EXIT;
     }
-
-
 
     public void run() {
         outputVIew.printBeginningNotice();

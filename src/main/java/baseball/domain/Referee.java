@@ -4,7 +4,6 @@ import baseball.domain.calculator.BallMatchCalculator;
 import baseball.domain.calculator.MatchCalculator;
 import baseball.domain.calculator.StrikeMatchCalculator;
 import baseball.domain.numbers.GameNumbers;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;

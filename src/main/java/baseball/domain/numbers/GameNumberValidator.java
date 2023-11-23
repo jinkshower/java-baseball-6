@@ -9,7 +9,8 @@ import java.util.Set;
 
 public class GameNumberValidator {
 
-    private GameNumberValidator() {}
+    private GameNumberValidator() {
+    }
 
     public static void validate(List<Integer> generatedNumbers) {
         validateDuplication(generatedNumbers);
