@@ -16,6 +16,6 @@ public enum Hint {
         if (hint == Hint.NOTHING) {
             return Hint.NOTHING.message;
         }
-        return count + message;
+        return count + message + " ";
     }
 }

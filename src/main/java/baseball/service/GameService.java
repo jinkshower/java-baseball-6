@@ -5,6 +5,7 @@ import baseball.domain.Hint;
 import baseball.domain.Referee;
 import baseball.domain.Result;
 import baseball.domain.numbers.GameNumbers;
+import baseball.view.OutputVIew;
 
 public class GameService {
 
@@ -18,6 +19,8 @@ public class GameService {
         Referee referee = new Referee();
         Result result = referee.judge(computerNumbers, userNumbers);
 
+        OutputVIew outputVIew = new OutputVIew();
+        outputVIew.printHint(result.getFormattedResult());
         if (result.getMatchResult().getOrDefault(Hint.STRIKE, 0) == 3) {
             return ApplicationStatus.APPLICATION_EXIT;
         }

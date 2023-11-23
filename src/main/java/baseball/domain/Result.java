@@ -19,13 +19,22 @@ public class Result {
             return new Result(result);
         }
 
-        result.put(Hint.STRIKE, calculatedMatch.get(0));
-        result.put(Hint.BALL, calculatedMatch.get(1));
+        result.put(Hint.BALL, calculatedMatch.get(0));
+        result.put(Hint.STRIKE, calculatedMatch.get(1));
         result.values().remove(0);
         return new Result(result);
     }
 
     public Map<Hint, Integer> getMatchResult() {
         return matchResult;
+    }
+
+    public String getFormattedResult() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Hint hint: matchResult.keySet()) {
+            String format = hint.getMessage(hint, matchResult.get(hint));
+            stringBuilder.append(format);
+        }
+        return stringBuilder.toString();
     }
 }
