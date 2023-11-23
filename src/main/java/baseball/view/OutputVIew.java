@@ -9,4 +9,8 @@ public class OutputVIew {
     public void printHint(String result) {
         System.out.println(result);
     }
+
+    public void printGameOverMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }

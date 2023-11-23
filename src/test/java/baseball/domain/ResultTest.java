@@ -11,7 +11,7 @@ class ResultTest {
     @Test
     void createBallTest() {
         GameNumbers computerNumbers = GameNumbers.of(() -> List.of(5,2,1));
-        GameNumbers userNumbers = GameNumbers.of(() -> List.of(1,5,2));
+        GameNumbers userNumbers = GameNumbers.of(() -> List.of(5,1,2));
 
         Referee referee = new Referee();
         Result result = referee.judge(computerNumbers, userNumbers);

@@ -15,4 +15,14 @@ public class InputView {
             throw new IllegalArgumentException();
         }
     }
+
+    public int readRetryOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            String text = Console.readLine();
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

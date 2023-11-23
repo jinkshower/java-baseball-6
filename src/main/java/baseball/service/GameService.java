@@ -22,7 +22,8 @@ public class GameService {
         OutputVIew outputVIew = new OutputVIew();
         outputVIew.printHint(result.getFormattedResult());
         if (result.getMatchResult().getOrDefault(Hint.STRIKE, 0) == 3) {
-            return ApplicationStatus.APPLICATION_EXIT;
+            outputVIew.printGameOverMessage();
+            return ApplicationStatus.RETRY;
         }
         return ApplicationStatus.PLAYING;
     }
