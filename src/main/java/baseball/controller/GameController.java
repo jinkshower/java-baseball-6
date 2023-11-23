@@ -5,6 +5,7 @@ import baseball.domain.numbers.GameNumbers;
 import baseball.domain.numbers.RandomNumberGenerator;
 import baseball.service.GameService;
 import baseball.view.InputView;
+import baseball.view.OutputVIew;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -12,11 +13,13 @@ import java.util.function.Supplier;
 public class GameController {
 
     private final InputView inputView;
+    private final OutputVIew outputVIew;
     private final Map<ApplicationStatus, Supplier<ApplicationStatus>> gameGuide;
     private  GameService gameService;
 
-    public GameController(InputView inputView) {
+    public GameController(InputView inputView, OutputVIew outputVIew) {
         this.inputView = inputView;
+        this.outputVIew = outputVIew;
         this.gameGuide = initializeGameGuide();
     }
 
@@ -55,6 +58,7 @@ public class GameController {
     }
 
     public void run() {
+        outputVIew.printBeginningNotice();
         ApplicationStatus applicationStatus = process(ApplicationStatus.SET_UP_GAME);
         while (applicationStatus.playable()) {
             applicationStatus = process(applicationStatus);
