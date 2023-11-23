@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.ApplicationStatus;
 import baseball.domain.numbers.GameNumbers;
 import baseball.domain.numbers.RandomNumberGenerator;
 import baseball.service.GameService;
@@ -34,8 +35,7 @@ public class GameController {
 
     private ApplicationStatus playRound() {
         GameNumbers userNumbers = GameNumbers.of(inputView::readUserNumbers);
-        gameService.playRound(userNumbers);
-        return ApplicationStatus.APPLICATION_EXIT;
+        return gameService.playRound(userNumbers);
     }
 
     public void run() {
@@ -50,17 +50,6 @@ public class GameController {
             return gameGuide.get(applicationStatus).get();
         } catch (IllegalArgumentException e) {
             return ApplicationStatus.APPLICATION_EXIT;
-        }
-    }
-
-    private enum ApplicationStatus {
-
-        SET_UP_GAME,
-        PLAYING,
-        APPLICATION_EXIT;
-
-        public boolean playable() {
-            return this != APPLICATION_EXIT;
         }
     }
 }

@@ -1,7 +1,10 @@
 package baseball.service;
 
+import baseball.domain.ApplicationStatus;
+import baseball.domain.Hint;
+import baseball.domain.Referee;
+import baseball.domain.Result;
 import baseball.domain.numbers.GameNumbers;
-import baseball.domain.numbers.RandomNumberGenerator;
 
 public class GameService {
 
@@ -11,7 +14,13 @@ public class GameService {
         this.computerNumbers = computerNumbers;
     }
 
-    public void playRound(GameNumbers userNumbers) {
-        GameNumbers computerNumbers = GameNumbers.of(RandomNumberGenerator::draw);
+    public ApplicationStatus playRound(GameNumbers userNumbers) {
+        Referee referee = new Referee();
+        Result result = referee.judge(computerNumbers, userNumbers);
+
+        if (result.getMatchResult().getOrDefault(Hint.STRIKE, 0) == 3) {
+            return ApplicationStatus.APPLICATION_EXIT;
+        }
+        return ApplicationStatus.PLAYING;
     }
 }

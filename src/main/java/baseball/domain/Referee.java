@@ -6,6 +6,7 @@ import baseball.domain.calculator.StrikeMatchCalculator;
 import baseball.domain.numbers.GameNumbers;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Referee {
 
@@ -35,6 +36,6 @@ public class Referee {
         return calculators.stream()
                 .mapToInt(i -> i.countMatch(computerNumbers.getNumbers(), userNumbers.getNumbers()))
                 .boxed()
-                .toList();
+                .collect(Collectors.toList());
     }
 }
