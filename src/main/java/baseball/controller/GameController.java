@@ -44,18 +44,13 @@ public class GameController {
 
     private ApplicationStatus retryOrExit() {
         int answer = inputView.readRetryOrExit();
-        validateRetryAnswer(answer);
         if (answer == 1) {
             return ApplicationStatus.SET_UP_GAME;
         }
         return ApplicationStatus.APPLICATION_EXIT;
     }
 
-    private void validateRetryAnswer(int answer) {
-        if (answer != 1 && answer != 2) {
-            throw new IllegalArgumentException();
-        }
-    }
+
 
     public void run() {
         outputVIew.printBeginningNotice();

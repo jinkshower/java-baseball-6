@@ -19,10 +19,18 @@ public class InputView {
     public int readRetryOrExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         try {
-            String text = Console.readLine();
-            return Integer.parseInt(text);
+            int answer = Integer.parseInt(Console.readLine());
+            validateRetryAnswer(answer);
+            return answer;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
+
+    private void validateRetryAnswer(int answer) {
+        if (answer != 1 && answer != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
