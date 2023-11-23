@@ -19,7 +19,7 @@ public class GameController {
         this.gameGuide = initializeGameGuide();
     }
 
-    private Map<ApplicationStatus, Supplier<ApplicationStatus>> initializeGameGuide() {]
+    private Map<ApplicationStatus, Supplier<ApplicationStatus>> initializeGameGuide() {
         Map<ApplicationStatus, Supplier<ApplicationStatus>> gameGuide = new EnumMap<>(ApplicationStatus.class);
         gameGuide.put(ApplicationStatus.SET_UP_GAME, this::setUp);
         gameGuide.put(ApplicationStatus.PLAYING, this::playRound);
@@ -34,7 +34,8 @@ public class GameController {
 
     private ApplicationStatus playRound() {
         GameNumbers userNumbers = GameNumbers.of(inputView::readUserNumbers);
-        = gameService.playRound(userNumbers);
+        gameService.playRound(userNumbers);
+        return ApplicationStatus.APPLICATION_EXIT;
     }
 
     public void run() {

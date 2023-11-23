@@ -60,4 +60,5 @@ class GameNumbersTest {
                 Arguments.of(List.of(1,2,-1))
         );
     }
+
 }
