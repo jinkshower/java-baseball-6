@@ -19,13 +19,13 @@ public class GameNumberValidator {
 
     private static void validateDuplication(List<Integer> generatedNumbers) {
         if (Set.copyOf(generatedNumbers).size() != generatedNumbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
     private static void validateRange(List<Integer> generatedNumbers) {
         if (generatedNumbers.stream().anyMatch(GameNumberValidator::isOutOfRange)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
@@ -35,7 +35,7 @@ public class GameNumberValidator {
 
     private static void validateSize(List<Integer> generatedNumbers) {
         if (generatedNumbers.size() != MAX_SIZE.getValue()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 

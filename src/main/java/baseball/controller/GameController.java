@@ -41,10 +41,17 @@ public class GameController {
 
     private ApplicationStatus retryOrExit() {
         int answer = inputView.readRetryOrExit();
+        validateRetryAnswer(answer);
         if (answer == 1) {
             return ApplicationStatus.SET_UP_GAME;
         }
         return ApplicationStatus.APPLICATION_EXIT;
+    }
+
+    private void validateRetryAnswer(int answer) {
+        if (answer != 1 && answer != 2) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void run() {
@@ -55,10 +62,12 @@ public class GameController {
     }
 
     private ApplicationStatus process(ApplicationStatus applicationStatus) {
-        try {
-            return gameGuide.get(applicationStatus).get();
-        } catch (IllegalArgumentException e) {
-            return ApplicationStatus.APPLICATION_EXIT;
+        while (true) {
+            try {
+                return gameGuide.get(applicationStatus).get();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
