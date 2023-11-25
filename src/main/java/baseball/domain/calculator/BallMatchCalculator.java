@@ -6,8 +6,11 @@ public class BallMatchCalculator<T> implements MatchCalculator<T> {
 
     @Override
     public int countMatch(List<T> input, List<T> computer) {
-        return (int) input.stream()
+        MatchCalculator<T> strikeCalculator = new StrikeMatchCalculator<>();
+        int strikeIncludedMatchCount = (int) input.stream()
                 .filter(computer::contains)
                 .count();
+        return strikeIncludedMatchCount - strikeCalculator.countMatch(input, computer);
     }
+
 }

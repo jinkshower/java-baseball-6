@@ -10,16 +10,13 @@ import java.util.stream.Collectors;
 
 public class Referee {
 
-    private static final int STRIKE_INDEX = 1;
-    private static final int BALL_INDEX = 0;
-
     private final List<MatchCalculator<Integer>> calculators;
 
     public Referee() {
         this.calculators = initializeCalculators();
     }
 
-    private List<MatchCalculator<Integer>> initializeCalculators() {
+    private List<MatchCalculator<Integer>> initializeCalculators() {®
         List<MatchCalculator<Integer>> calculators = new LinkedList<>();
         calculators.add(new BallMatchCalculator<>());
         calculators.add(new StrikeMatchCalculator<>());
@@ -28,7 +25,6 @@ public class Referee {
 
     public Result judge(GameNumbers computerNumbers, GameNumbers userNumbers) {
         List<Integer> calculatedMatch = calculate(computerNumbers, userNumbers);
-        calculatedMatch.set(BALL_INDEX, calculatedMatch.get(BALL_INDEX) - calculatedMatch.get(STRIKE_INDEX));
         return Result.of(calculatedMatch);
     }
 
