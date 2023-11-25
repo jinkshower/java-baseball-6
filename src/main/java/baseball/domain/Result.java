@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 
 public class Result {
@@ -13,20 +11,17 @@ public class Result {
         this.matchResult = matchResult;
     }
 
-    public static Result of(List<Integer> calculatedMatch) {
-        Map<Hint, Integer> result = new EnumMap<>(Hint.class);
-        if (calculatedMatch.stream().reduce(0, Integer::sum) == 0) {
-            result.put(Hint.NOTHING, 0);
-            return new Result(result);
+    public static Result of(Map<Hint, Integer> calculatedMatch) {
+        if (isNoMatch(calculatedMatch)) {
+            calculatedMatch.values().remove(0);
+            calculatedMatch.put(Hint.NOTHING, 0);
+            return new Result(calculatedMatch);
         }
-        return new Result(assignHint(result, calculatedMatch));
+        return new Result(calculatedMatch);
     }
 
-    private static Map<Hint, Integer> assignHint(Map<Hint, Integer> result, List<Integer> calculatedMatch) {
-        result.put(Hint.BALL, calculatedMatch.get(0));
-        result.put(Hint.STRIKE, calculatedMatch.get(1));
-        result.values().remove(0);
-        return result;
+    private static boolean isNoMatch(Map<Hint, Integer> calculatedMatch) {
+        return calculatedMatch.values().stream().reduce(0, Integer::sum) == 0;
     }
 
     public boolean isThreeStrike() {

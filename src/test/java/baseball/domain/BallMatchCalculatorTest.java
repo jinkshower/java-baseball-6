@@ -27,7 +27,7 @@ class BallMatchCalculatorTest {
     static Stream<Arguments> provideTwoSampleLists() {
         return Stream.of(
                 Arguments.of(List.of(5,8,2), List.of(1,2,3), 1),
-                Arguments.of(List.of("1","3","2"), List.of("2","3","4"), 2));
+                Arguments.of(List.of("1","3","2"), List.of("2","3","4"), 1));
     }
 
 }

@@ -4,8 +4,10 @@ import baseball.domain.calculator.BallMatchCalculator;
 import baseball.domain.calculator.MatchCalculator;
 import baseball.domain.calculator.StrikeMatchCalculator;
 import baseball.domain.numbers.GameNumbers;
+import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Referee {
@@ -16,7 +18,7 @@ public class Referee {
         this.calculators = initializeCalculators();
     }
 
-    private List<MatchCalculator<Integer>> initializeCalculators() {®
+    private List<MatchCalculator<Integer>> initializeCalculators() {
         List<MatchCalculator<Integer>> calculators = new LinkedList<>();
         calculators.add(new BallMatchCalculator<>());
         calculators.add(new StrikeMatchCalculator<>());
@@ -24,14 +26,16 @@ public class Referee {
     }
 
     public Result judge(GameNumbers computerNumbers, GameNumbers userNumbers) {
-        List<Integer> calculatedMatch = calculate(computerNumbers, userNumbers);
-        return Result.of(calculatedMatch);
+        return Result.of(calculate(computerNumbers, userNumbers));
     }
 
-    private List<Integer> calculate(GameNumbers computerNumbers, GameNumbers userNumbers) {
-        return calculators.stream()
-                .mapToInt(i -> i.countMatch(userNumbers.getNumbers(), computerNumbers.getNumbers()))
-                .boxed()
-                .collect(Collectors.toList());
+    private Map<Hint, Integer> calculate(GameNumbers computerNumbers, GameNumbers userNumbers) {
+        Map<Hint, Integer> assignedResult = new EnumMap<>(Hint.class);
+        for (MatchCalculator<Integer> matchCalculator: calculators) {
+            assignedResult.putAll(
+                    matchCalculator.assignHint(computerNumbers.getNumbers(), userNumbers.getNumbers())
+            );
+        }
+        return assignedResult;
     }
 }
